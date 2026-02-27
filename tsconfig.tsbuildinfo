@@ -1,0 +1,1 @@
+{"root":["./.nuxt/nuxt.d.ts","./app/app.vue","./app/tailwind.config.js","./app/components/homepage.vue","./app/layouts/default.vue","./app/pages/index.vue","./app/stores/useexamplestore.ts","./app/tests/e2e/homepage.cy.ts","./app/tests/unit/example.spec.ts","./.nuxt/nuxt.node.d.ts","./nuxt.config.ts"],"errors":true,"version":"5.9.3"}

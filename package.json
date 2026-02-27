@@ -1,0 +1,71 @@
+{
+  "name": "vibe-vue",
+  "version": "0.0.0",
+  "description": "A learning platform for web developers built with Nuxt 4, Vue 3, and TypeScript",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "vue-tsc --noEmit",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:unit:coverage": "vitest run --coverage",
+    "test:e2e": "cypress run",
+    "test:e2e:open": "cypress open"
+  },
+  "dependencies": {
+    "@bubblesortt/nuxt-es-toolkit": "^1.0.10",
+    "@pinia/nuxt": "^0.11.3",
+    "nuxt": "^4.3.1",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.28",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/eslint-config": "^1.15.2",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@types/node": "^22.13.4",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/ui": "^4.0.18",
+    "@vue/compiler-sfc": "^3.5.28",
+    "@vue/test-utils": "^2.4.6",
+    "cypress": "^15.11.0",
+    "eslint": "^9.39.3",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.7.3",
+    "vitest": "^4.0.18",
+    "vue-tsc": "^2.2.8"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikotyan2719/vibe-vue.git"
+  },
+  "keywords": [
+    "nuxt",
+    "vue",
+    "typescript",
+    "learning-platform",
+    "web-development"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nikotyan2719/vibe-vue/issues"
+  },
+  "homepage": "https://github.com/Nikotyan2719/vibe-vue#readme",
+  "engines": {
+    "node": ">=18"
+  }
+}

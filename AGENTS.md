@@ -4,13 +4,23 @@ This file contains essential information for agentic coding agents working on th
 
 ## Project Overview
 
+Vibe Vue is a pet project - a learning platform for web developers. The platform features:
+
+- A beautiful homepage advertising lessons with navigation to lesson pages
+- Lessons covering CSS, JavaScript, and HTML fundamentals
+- An integrated code editor (using a third-party library) for trying out JavaScript code learned in lessons
+- A comments/chat section under each lesson where users can post comments as guests
+- All data managed via Pinia stores with mock data initially
+
+**Technical Stack**:
+
 - **Framework**: Nuxt 4.x (Vue 3 Composition API)
 - **Build Tool**: Vite (via Nuxt)
 - **Server Runtime**: Nitro
 - **Language**: TypeScript (strict mode)
 - **State Management**: Pinia (if needed, prefer SSR-safe patterns)
 - **Testing**: Vitest (unit), Cypress (e2e)
-- **Linting**: ESLint + Prettier
+- **Linting**: ESLint
 - **Styling**: Tailwind CSS (if configured)
 - **Toolkit**: `@bubblesortt/nuxt-es-toolkit` (use prefix convention)
 
@@ -29,6 +39,7 @@ This file contains essential information for agentic coding agents working on th
 - No SPA navigation assumptions
 - No usage of `any` (TypeScript strict compliance required)
 - Avoid runtime-only browser dependencies in shared logic
+- Fully responsive design required across all devices and screen sizes
 
 ## Rendering Model
 
@@ -56,6 +67,7 @@ This file contains essential information for agentic coding agents working on th
 ## Auto-Imports
 
 Nuxt 4 provides automatic imports for:
+
 - Vue 3 APIs (`ref`, `computed`, `onMounted`, etc.)
 - Nuxt composables (`useFetch`, `useAsyncData`, `useRouter`, etc.)
 - Components from `~/components` directory
@@ -63,6 +75,7 @@ Nuxt 4 provides automatic imports for:
 - Utils from `~/utils` directory
 
 ### Guidelines:
+
 - **Do NOT explicitly import auto-imported items** - rely on Nuxt's auto-import system
 - **Follow Nuxt directory structure** for automatic discovery
 - **Components**: Place in `~/components` with PascalCase naming (`.vue` or `.ts` files)
@@ -72,13 +85,14 @@ Nuxt 4 provides automatic imports for:
 - **Path aliases**: Use `~/` for root, `@/` for `src/` directory
 
 Example of auto-import usage (no explicit import needed):
+
 ```vue
 <script setup>
 // No import needed for ref, computed, useFetch - Nuxt auto-imports them
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
+const count = ref(0);
+const doubled = computed(() => count.value * 2);
 
-const { data } = await useFetch('/api/data')
+const { data } = await useFetch('/api/data');
 </script>
 
 <template>
@@ -136,19 +150,7 @@ pnpm lint:fix
 # or
 yarn lint:fix
 
-# Run Prettier to format code
-npm run format
-# or
-pnpm format
-# or
-yarn format
 
-# Check formatting without changes
-npm run format:check
-# or
-pnpm format:check
-# or
-yarn format:check
 ```
 
 ## Test Commands
@@ -214,14 +216,15 @@ yarn test:e2e:open
 - Use named imports over default imports when possible
 
 Example (showing only necessary imports):
+
 ```typescript
 // Vue APIs (ref, computed) are auto-imported by Nuxt - NO explicit import needed
-import { defineStore } from 'pinia' // Pinia not auto-imported
-import axios from 'axios'
-import { useGet } from '@bubblesortt/nuxt-es-toolkit' // use prefix convention
-import { useSomeComposable } from '@/composables/useSomeComposable'
-import type { User } from '@/types/user'
-import MyComponent from './MyComponent.vue' // Only import if component is NOT in ~/components
+import { defineStore } from 'pinia'; // Pinia not auto-imported
+import axios from 'axios';
+import { useGet } from '@bubblesortt/nuxt-es-toolkit'; // use prefix convention
+import { useSomeComposable } from '@/composables/useSomeComposable';
+import type { User } from '@/types/user';
+import MyComponent from './MyComponent.vue'; // Only import if component is NOT in ~/components
 ```
 
 ### Formatting
@@ -230,7 +233,7 @@ import MyComponent from './MyComponent.vue' // Only import if component is NOT i
 - **Quotes**: Single quotes for strings, backticks for template literals
 - **Semicolons**: Include semicolons
 - **Trailing commas**: Include in multiline objects/arrays
-- **Line length**: 80-100 characters (configured in Prettier)
+- **Line length**: 80-100 characters (configured in ESLint)
 - **Vue SFC**: Use `<script setup>` for Composition API; template uses kebab-case tags
 
 ### Types
@@ -274,11 +277,13 @@ import MyComponent from './MyComponent.vue' // Only import if component is NOT i
 ### Component Structure
 
 Single File Component order:
+
 1. `<template>` (if present)
 2. `<script setup>`
 3. `<style>` (scoped by default)
 
 Within `<script setup>`:
+
 1. Imports
 2. Type definitions
 3. Props/emits definitions
@@ -323,3 +328,12 @@ Within `<script setup>`:
 This file is a generic template for a Nuxt 4.x + Vue 3 + TypeScript project. Update with actual project configuration once available.
 
 Last updated: 2026-02-27
+
+## Active Technologies
+
+- TypeScript (strict mode), Nuxt 4.x, Vue 3, Node.js 18+ + `@bubblesortt/nuxt-es-toolkit`, Pinia, Vitest, Cypress, ESLint, Tailwind CSS with Nuxt module (001-project-setup)
+- N/A (mock data in Pinia stores initially) (001-project-setup)
+
+## Recent Changes
+
+- 001-project-setup: Added TypeScript (strict mode), Nuxt 4.x, Vue 3, Node.js 18+ + `@bubblesortt/nuxt-es-toolkit`, Pinia, Vitest, Cypress, ESLint, Tailwind CSS with Nuxt module
