@@ -1,28 +1,8 @@
-# AGENTS.md - Vibe Vue Project
+# AGENTS.md - Vue 3 TypeScript Project
 
 This file contains essential information for agentic coding agents working on this Vue 3 TypeScript project.
 
-## Project Overview
 
-Vibe Vue is a pet project - a learning platform for web developers. The platform features:
-
-- A beautiful homepage advertising lessons with navigation to lesson pages
-- Lessons covering CSS, JavaScript, and HTML fundamentals
-- An integrated code editor (using a third-party library) for trying out JavaScript code learned in lessons
-- A comments/chat section under each lesson where users can post comments as guests
-- All data managed via Pinia stores with mock data initially
-
-**Technical Stack**:
-
-- **Framework**: Nuxt 4.x (Vue 3 Composition API)
-- **Build Tool**: Vite (via Nuxt)
-- **Server Runtime**: Nitro
-- **Language**: TypeScript (strict mode)
-- **State Management**: Pinia (if needed, prefer SSR-safe patterns)
-- **Testing**: Vitest (unit), Cypress (e2e)
-- **Linting**: ESLint
-- **Styling**: Tailwind CSS (if configured)
-- **Toolkit**: `@bubblesortt/nuxt-es-toolkit` (use prefix convention)
 
 ## Stack
 
@@ -64,8 +44,10 @@ Vibe Vue is a pet project - a learning platform for web developers. The platform
 - All public APIs must be explicitly typed
 - **ALWAYS use `@bubblesortt/nuxt-es-toolkit` utilities for data operations** (arrays, objects, strings, etc.)
 - **ALWAYS use the `use` prefix convention** (e.g., `useSize`, `useMap`, `useFilter` instead of native methods)
-- **ALWAYS destructure props immediately after definition** - never use `props.` prefix in template or script
-- Prefer `useSize(lessons)` over `lessons.length`, `useMap(lessons, ...)` over `lessons.map(...)`, etc.
+- **NEVER destructure props** - always use `props.` prefix in template and script
+- **NEVER create separate interfaces for props** - write types inline with `defineProps<{ ... }>()`
+- **NEVER leave comments in code** - code must be self-explanatory
+- Prefer `useSize(items)` over `items.length`, `useMap(items, ...)` over `items.map(...)`, etc.
 
 ## Auto-Imports
 
@@ -261,9 +243,10 @@ import MyComponent from './MyComponent.vue'; // Only import if component is NOT 
 
 - Use Composition API with `<script setup>`
 - Define props with `defineProps<T>()` or `withDefaults`
-- **Always destructure props** for direct access in template and script:
+- **Never destructure props** - always use `props.` prefix in template and script:
   ```typescript
-  const { lessons, loading = false } = defineProps<{ lessons: Lesson[]; loading?: boolean }>()
+  const props = defineProps<{ items: Item[]; loading?: boolean }>()
+  // Access via props.items, props.loading
   ```
 - Define emits with `defineEmits<T>()`
 - Use `ref` for reactive primitives, `reactive` for objects (prefer `ref` for consistency)
@@ -336,13 +319,4 @@ This file is a generic template for a Nuxt 4.x + Vue 3 + TypeScript project. Upd
 
 Last updated: 2026-02-27
 
-## Active Technologies
-- TypeScript (strict mode), Nuxt 4.x (4.3.1), Vue 3 (3.5.28), Node.js (≥18) + `@bubblesortt/nuxt-es-toolkit` (1.0.10), Pinia (3.0.4), Vitest (4.0.18), Cypress (15.11.0), ESLint (9.39.3), Tailwind CSS (3.4.19) (001-site-design-layout)
-- Pinia stores with mock data initially, no external storage required for this feature (001-site-design-layout)
 
-- TypeScript (strict mode), Nuxt 4.x, Vue 3, Node.js 18+ + `@bubblesortt/nuxt-es-toolkit`, Pinia, Vitest, Cypress, ESLint, Tailwind CSS with Nuxt module (001-project-setup)
-- N/A (mock data in Pinia stores initially) (001-project-setup)
-
-## Recent Changes
-
-- 001-project-setup: Added TypeScript (strict mode), Nuxt 4.x, Vue 3, Node.js 18+ + `@bubblesortt/nuxt-es-toolkit`, Pinia, Vitest, Cypress, ESLint, Tailwind CSS with Nuxt module

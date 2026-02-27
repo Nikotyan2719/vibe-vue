@@ -1,16 +1,6 @@
-# Vibe Vue - Learning Platform for Web Developers
+# Nuxt 4 TypeScript Project
 
-A modern, SSR-first learning platform built with Nuxt 4, Vue 3, and TypeScript. Features interactive lessons, code editor integration, and guest comment sections.
-
-## 🚀 Features
-
-- **SSR-First Architecture**: Server-side rendering for optimal performance and SEO
-- **Interactive Lessons**: CSS, JavaScript, and HTML fundamentals with hands-on examples
-- **Integrated Code Editor**: Try JavaScript code directly in lessons
-- **Guest Comment Sections**: Community interaction under each lesson
-- **Responsive Design**: Fully responsive across all devices and screen sizes
-- **TypeScript Strict**: Full type safety with no `any` usage
-- **Modern Tooling**: ESLint, Vitest, Cypress, Tailwind CSS
+A modern, SSR-first web application built with Nuxt 4, Vue 3, and TypeScript.
 
 ## 🛠️ Tech Stack
 
@@ -25,19 +15,16 @@ A modern, SSR-first learning platform built with Nuxt 4, Vue 3, and TypeScript. 
 ## 📁 Project Structure
 
 ```
-vibe-vue/
-├── app/                    # Main application directory
-│   ├── components/        # Vue components (auto-imported)
-│   ├── composables/       # Composables (auto-imported)
-│   ├── stores/           # Pinia stores (SSR-safe)
-│   ├── pages/            # Nuxt pages/routes
-│   ├── layouts/          # Layout components
-│   ├── assets/           # Static assets (CSS, images)
-│   ├── utils/            # Utility functions
-│   ├── types/            # TypeScript type definitions
-│   └── tests/            # Test files (unit & e2e)
-├── public/               # Static files
-└── specs/               # Project specifications and planning
+app/
+├── components/        # Vue components (auto-imported)
+├── composables/       # Composables (auto-imported)
+├── stores/           # Pinia stores (SSR-safe)
+├── pages/            # Nuxt pages/routes
+├── layouts/          # Layout components
+├── assets/           # Static assets (CSS, images)
+├── utils/            # Utility functions
+├── types/            # TypeScript type definitions
+└── tests/            # Test files (unit & e2e)
 ```
 
 ## 🚀 Getting Started
@@ -49,10 +36,6 @@ vibe-vue/
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/Nikotyan2719/vibe-vue.git
-cd vibe-vue
-
 # Install dependencies
 npm install
 
@@ -100,24 +83,16 @@ npm run test:e2e:open
 - **E2E Tests**: Cypress for browser testing
 - **Coverage**: Run `npm run test:unit:coverage` for coverage report
 
-Example test structure:
-```
-app/tests/unit/          # Unit tests
-app/tests/e2e/           # End-to-end tests
-```
-
 ## 🎨 Styling
 
 - **Tailwind CSS**: Utility-first CSS framework
 - **Responsive Design**: Mobile-first responsive utilities
-- **Custom Theme**: Extendable design system in `app/tailwind.config.js`
 
 ## 🔧 Configuration
 
 - **Nuxt**: `nuxt.config.ts` - Main Nuxt configuration
 - **TypeScript**: `tsconfig.json` - Strict TypeScript settings
 - **ESLint**: `eslint.config.mjs` - Code quality rules
-- **Tailwind**: `app/tailwind.config.js` - Design system
 - **Vitest**: `vitest.config.ts` - Test configuration
 - **Cypress**: `cypress.config.ts` - E2E test configuration
 
@@ -140,7 +115,3 @@ The application is optimized for deployment on platforms supporting Node.js SSR:
 ## 📄 License
 
 ISC License - see LICENSE file for details.
-
-## 📞 Contact
-
-Project Link: [https://github.com/Nikotyan2719/vibe-vue](https://github.com/Nikotyan2719/vibe-vue)

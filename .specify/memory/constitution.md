@@ -12,19 +12,7 @@ Sync Impact Report:
 - Follow-up TODOs: None
 -->
 
-# Vibe Vue Constitution
-
-## Project Overview
-
-Vibe Vue is a pet project - a learning platform for web developers. The platform features:
-
-- A beautiful homepage advertising lessons with navigation to lesson pages
-- Lessons covering CSS, JavaScript, and HTML fundamentals
-- An integrated code editor (using a third-party library) for trying out JavaScript code learned in lessons
-- A comments/chat section under each lesson where users can post comments as guests
-- All data managed via Pinia stores with mock data initially
-
-The project serves as a practice environment for Nuxt 4, Vue 3 Composition API, and modern frontend development patterns while delivering a functional educational tool.
+# Project Constitution
 
 ## Core Principles
 
@@ -71,6 +59,9 @@ Use `@bubblesortt/nuxt-es-toolkit` with `use` prefix convention. Data fetching v
 - Follow Nuxt 4.x conventions and check Nuxt LLM context for updates
 - Use `@bubblesortt/nuxt-es-toolkit` with `use` prefix convention
 - Verify components degrade gracefully without hydration
+- **NEVER destructure props** - always use `props.` prefix in template and script
+- **NEVER create separate interfaces for props** - write types inline with `defineProps<{ ... }>()`
+- **NEVER leave comments in code** - code must be self-explanatory
 
 ## Governance
 
