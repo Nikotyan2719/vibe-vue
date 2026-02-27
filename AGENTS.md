@@ -330,6 +330,8 @@ This file is a generic template for a Nuxt 4.x + Vue 3 + TypeScript project. Upd
 Last updated: 2026-02-27
 
 ## Active Technologies
+- TypeScript (strict mode), Nuxt 4.x (4.3.1), Vue 3 (3.5.28), Node.js (≥18) + `@bubblesortt/nuxt-es-toolkit` (1.0.10), Pinia (3.0.4), Vitest (4.0.18), Cypress (15.11.0), ESLint (9.39.3), Tailwind CSS (3.4.19) (001-site-design-layout)
+- Pinia stores with mock data initially, no external storage required for this feature (001-site-design-layout)
 
 - TypeScript (strict mode), Nuxt 4.x, Vue 3, Node.js 18+ + `@bubblesortt/nuxt-es-toolkit`, Pinia, Vitest, Cypress, ESLint, Tailwind CSS with Nuxt module (001-project-setup)
 - N/A (mock data in Pinia stores initially) (001-project-setup)
