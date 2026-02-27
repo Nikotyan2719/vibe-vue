@@ -6,11 +6,11 @@
 ## Purpose
 Define TypeScript interfaces for component props to ensure type safety and clear component APIs.
 
-## Component: SiteHeader
+## Component: AppHeader
 
 ### Props Interface
 ```typescript
-interface SiteHeaderProps {
+interface AppHeaderProps {
   /**
    * Optional custom CSS class for the header container
    */
@@ -35,14 +35,14 @@ interface SiteHeaderProps {
 
 ### Default Props
 ```typescript
-const props = withDefaults(defineProps<SiteHeaderProps>(), {
+const props = withDefaults(defineProps<AppHeaderProps>(), {
   additionalLinks: () => []
 })
 ```
 
 ### Emitted Events
 ```typescript
-interface SiteHeaderEmits {
+interface AppHeaderEmits {
   /**
    * Emitted when a navigation link is clicked
    * @param link - The clicked link object
@@ -51,11 +51,11 @@ interface SiteHeaderEmits {
 }
 ```
 
-## Component: SiteFooter
+## Component: AppFooter
 
 ### Props Interface
 ```typescript
-interface SiteFooterProps {
+interface AppFooterProps {
   /**
    * Optional custom CSS class for the footer container
    */
@@ -80,7 +80,7 @@ interface SiteFooterProps {
 
 ### Default Props
 ```typescript
-const props = withDefaults(defineProps<SiteFooterProps>(), {
+const props = withDefaults(defineProps<AppFooterProps>(), {
   copyright: 'Vibe Vue © 2026 - Learning platform for web developers',
   links: () => []
 })
@@ -173,14 +173,14 @@ interface LessonsListEmits {
 
 ## Usage Examples
 
-### SiteHeader
+### AppHeader
 ```vue
-<SiteHeader :additional-links="[{ to: '/contact', label: 'Contact' }]" />
+<AppHeader :additional-links="[{ to: '/contact', label: 'Contact' }]" />
 ```
 
-### SiteFooter
+### AppFooter
 ```vue
-<SiteFooter
+<AppFooter
   :links="[
     { to: '/privacy', label: 'Privacy Policy' },
     { to: '/terms', label: 'Terms', external: true }

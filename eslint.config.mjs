@@ -15,7 +15,9 @@ export default withNuxt(
       '.env',
       '.env.*',
       '!.env.example',
-      'public'
+      'public',
+      'build/',
+      '*.tmp'
     ]
   }
   // Your custom configs here

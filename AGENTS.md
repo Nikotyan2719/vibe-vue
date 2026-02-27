@@ -62,7 +62,10 @@ Vibe Vue is a pet project - a learning platform for web developers. The platform
 - No global mutable singletons
 - Components must degrade gracefully without hydration
 - All public APIs must be explicitly typed
-- Use `@bubblesortt/nuxt-es-toolkit` with `use` prefix (e.g., `useGet` instead of `get`)
+- **ALWAYS use `@bubblesortt/nuxt-es-toolkit` utilities for data operations** (arrays, objects, strings, etc.)
+- **ALWAYS use the `use` prefix convention** (e.g., `useSize`, `useMap`, `useFilter` instead of native methods)
+- **ALWAYS destructure props immediately after definition** - never use `props.` prefix in template or script
+- Prefer `useSize(lessons)` over `lessons.length`, `useMap(lessons, ...)` over `lessons.map(...)`, etc.
 
 ## Auto-Imports
 
@@ -258,6 +261,10 @@ import MyComponent from './MyComponent.vue'; // Only import if component is NOT 
 
 - Use Composition API with `<script setup>`
 - Define props with `defineProps<T>()` or `withDefaults`
+- **Always destructure props** for direct access in template and script:
+  ```typescript
+  const { lessons, loading = false } = defineProps<{ lessons: Lesson[]; loading?: boolean }>()
+  ```
 - Define emits with `defineEmits<T>()`
 - Use `ref` for reactive primitives, `reactive` for objects (prefer `ref` for consistency)
 - Extract reusable logic into composables

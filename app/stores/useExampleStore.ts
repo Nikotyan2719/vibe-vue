@@ -21,9 +21,9 @@ export const useExampleStore = defineStore('example', {
     ]
   }),
   getters: {
-    completedLessons: state => state.lessons.filter(lesson => lesson.completed),
-    pendingLessons: state => state.lessons.filter(lesson => !lesson.completed),
-    totalLessons: state => state.lessons.length
+    completedLessons: state => useFilter(state.lessons, lesson => lesson.completed),
+    pendingLessons: state => useFilter(state.lessons, lesson => !lesson.completed),
+    totalLessons: state => useSize(state.lessons)
   },
   actions: {
     increment() {
@@ -33,14 +33,14 @@ export const useExampleStore = defineStore('example', {
       this.counter--
     },
     completeLesson(id: number) {
-      const lesson = this.lessons.find(lesson => lesson.id === id)
+      const lesson = useFind(this.lessons, lesson => lesson.id === id)
       if (lesson) {
         lesson.completed = true
       }
     },
     reset() {
       this.counter = 0
-      this.lessons.forEach((lesson) => {
+      useForEach(this.lessons, (lesson) => {
         lesson.completed = false
       })
     }

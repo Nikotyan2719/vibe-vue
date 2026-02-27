@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/tailwindcss'],
+  modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/tailwindcss', '@bubblesortt/nuxt-es-toolkit'],
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   srcDir: 'app/',
@@ -19,6 +19,10 @@ export default defineNuxtConfig({
     }
   },
   tailwindcss: {
-    configPath: '~/app/tailwind.config.js'
+    configPath: '~/app/tailwind.config.js',
+    cssPath: '~/assets/css/tailwind.scss'
+  },
+  esToolkit: {
+    prefix: 'use'
   }
 })

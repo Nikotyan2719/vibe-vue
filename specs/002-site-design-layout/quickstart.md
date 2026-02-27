@@ -55,7 +55,7 @@ export default defineNuxtConfig({
 
 ### 2. Create Header Component
 
-Create `app/components/SiteHeader.vue`:
+Create `app/components/App/AppHeader.vue`:
 ```vue
 <template>
   <header class="site-header">
@@ -70,7 +70,7 @@ Create `app/components/SiteHeader.vue`:
 
 ### 3. Create Footer Component
 
-Create `app/components/SiteFooter.vue`:
+Create `app/components/App/AppFooter.vue`:
 ```vue
 <template>
   <footer class="site-footer">
@@ -85,7 +85,7 @@ Create `app/components/SiteFooter.vue`:
 
 ### 4. Create LessonsList Component
 
-Create `app/components/LessonsList.vue`:
+Create `app/components/Lessons/LessonsList.vue`:
 ```vue
 <template>
   <div class="lessons-list">
@@ -104,16 +104,16 @@ Update `app/layouts/default.vue`:
 ```vue
 <template>
   <div class="default-layout">
-    <SiteHeader />
+    <AppHeader />
     <main class="layout-main">
       <slot />
     </main>
-    <SiteFooter />
+    <AppFooter />
   </div>
 </template>
 
 <script setup lang="ts">
-// Auto-imports will handle SiteHeader and SiteFooter
+// Auto-imports will handle AppHeader and AppFooter
 </script>
 
 <style scoped>
@@ -164,16 +164,16 @@ const store = useExampleStore()
 
 Before considering the feature complete:
 
-- [ ] Header displays on all pages with Home, Lessons, About links
-- [ ] Active link highlighted in header (e.g., Lessons page highlights "Lessons")
-- [ ] Footer displays copyright text on all pages
-- [ ] Layout adapts to mobile (≤768px) and desktop (≥1200px)
-- [ ] No horizontal scrolling on any screen size
-- [ ] Lessons page displays all lessons from store
-- [ ] Completed lessons visually distinct from pending lessons
-- [ ] Empty state handled (no lessons message)
-- [ ] ESLint passes with no errors
-- [ ] TypeScript compilation passes (`npm run typecheck`)
+- [X] Header displays on all pages with Home, Lessons, About links
+- [X] Active link highlighted in header (e.g., Lessons page highlights "Lessons")
+- [X] Footer displays copyright text on all pages
+- [X] Layout adapts to mobile (≤768px) and desktop (≥1200px)
+- [X] No horizontal scrolling on any screen size
+- [X] Lessons page displays all lessons from store
+- [X] Completed lessons visually distinct from pending lessons
+- [X] Empty state handled (no lessons message)
+- [ ] ESLint passes with no errors (requires nuxt prepare)
+- [X] TypeScript compilation passes (`npm run typecheck`)
 
 ## Development Commands
 
