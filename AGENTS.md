@@ -141,47 +141,47 @@ yarn lint:fix
 ## Test Commands
 
 ```bash
-# Run all unit tests
-npm run test:unit
+# Run all tests (unit + component)
+npm run test
 # or
-pnpm test:unit
+pnpm test
 # or
-yarn test:unit
+yarn test
 
-# Run unit tests in watch mode
-npm run test:unit:watch
+# Run tests in watch mode
+npm run test:watch
 # or
-pnpm test:unit:watch
+pnpm test:watch
 # or
-yarn test:unit:watch
+yarn test:watch
 
-# Run a single unit test file
-npm run test:unit -- src/path/to/test.spec.ts
+# Run tests with coverage
+npm run test:coverage
 # or
-pnpm test:unit src/path/to/test.spec.ts
+pnpm test:coverage
 # or
-yarn test:unit src/path/to/test.spec.ts
+yarn test:coverage
 
-# Run unit tests with coverage
-npm run test:unit:coverage
+# Run tests with UI
+npm run test:ui
 # or
-pnpm test:unit:coverage
+pnpm test:ui
 # or
-yarn test:unit:coverage
+yarn test:ui
 
-# Run e2e tests with Cypress
+# Run e2e tests
 npm run test:e2e
 # or
 pnpm test:e2e
 # or
 yarn test:e2e
 
-# Open Cypress UI
-npm run test:e2e:open
+# Run e2e tests with UI
+npm run test:e2e:ui
 # or
-pnpm test:e2e:open
+pnpm test:e2e:ui
 # or
-yarn test:e2e:open
+yarn test:e2e:ui
 ```
 
 ## Code Style Guidelines
@@ -299,6 +299,72 @@ Within `<script setup>`:
 - **PR titles**: Same as commit messages
 - **Squash merges**: Preferred for feature branches
 
+## Test Structure & Conventions
+
+### Test File Organization
+- **Component tests**: `app/components/[ComponentName]/[ComponentName].test.ts`
+- **Composable tests**: `app/composables/[composableName]/[composableName].test.ts`
+- **Utility tests**: `app/utils/[utilityName]/[utilityName].test.ts`
+- **E2E tests**: `app/tests/e2e/[testName].e2e.test.ts`
+
+### Testing Tools
+- **Unit/Component**: Vitest, @vue/test-utils, @nuxt/test-utils/runtime
+- **E2E**: @nuxt/test-utils/e2e with Playwright
+- **Mocking**: `mockNuxtImport` for Nuxt auto-imports
+- **Mounting**: `mountSuspended` for SSR-safe component mounting
+- **Environment**: `happy-dom` for unit tests
+
+### Test Examples
+
+**Component Test:**
+```typescript
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { ExampleForm } from '#components'
+
+mockNuxtImport('useI18n', () => () => ({ t: (key: string) => key }))
+
+describe('ExampleForm', () => {
+  it('renders submit button', async () => {
+    const wrapper = await mountSuspended(ExampleForm)
+    expect(wrapper.text()).toContain('Отправить')
+  })
+})
+```
+
+**Composable Test:**
+```typescript
+import { useNuxtApp } from '#app'
+import { useAbility } from '#imports'
+
+describe('useAbility', () => {
+  it('returns can function', async () => {
+    const { can } = await useNuxtApp().runWithContext(() => useAbility())
+    expect(can).toBeDefined()
+    expect(can('login', 'auth')).toBe(true)
+  })
+})
+```
+
+**E2E Test:**
+```typescript
+import { createPage, setup } from '@nuxt/test-utils/e2e'
+
+describe('Home Page', async () => {
+  await setup({
+    host: process.env.TEST_HOST ?? 'http://localhost:3000',
+    browserOptions: {
+      type: process.env.BROWSER_TYPE ?? 'chromium',
+      launch: { headless: process.env.WATCH !== 'Y' }
+    }
+  })
+
+  it('loads home page', async () => {
+    const page = await createPage('/')
+    await expect(page).toHaveTitle('Vibe Vue')
+  })
+})
+```
+
 ## Agent Instructions
 
 - Always run lint and type checks before committing
@@ -312,6 +378,9 @@ Within `<script setup>`:
 - Follow Nuxt 4.x conventions and check Nuxt LLM context for updates
 - Use `@bubblesortt/nuxt-es-toolkit` with `use` prefix convention
 - Verify components degrade gracefully without hydration
+- **Test Structure**: Follow component/composable/utility test file naming conventions
+- **Test Dependencies**: Use `@nuxt/test-utils` and `@vue/test-utils` instead of Cypress
+- **Test Environment**: Use `happy-dom` for unit tests, Playwright for e2e tests
 
 ## Notes
 

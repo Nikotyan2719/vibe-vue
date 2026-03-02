@@ -1,0 +1,14 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "types": ["vitest/globals", "@nuxt/test-utils", "happy-dom"]
+  },
+  "include": [
+    "app/**/*.test.ts",
+    "app/**/*.spec.ts",
+    "app/**/*.e2e.test.ts",
+    "app/**/*.e2e.spec.ts",
+    "vitest.setup.ts",
+    "vitest.setup.e2e.ts"
+  ]
+}

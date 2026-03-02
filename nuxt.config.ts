@@ -18,11 +18,11 @@ export default defineNuxtConfig({
       }
     }
   },
+  esToolkit: {
+    prefix: 'use'
+  },
   tailwindcss: {
     configPath: '~/app/tailwind.config.js',
     cssPath: '~/assets/css/tailwind.scss'
-  },
-  esToolkit: {
-    prefix: 'use'
   }
 })

@@ -30,7 +30,19 @@ TypeScript strict compliance required. Define interfaces/types for component pro
 
 ### IV. Testing & Verification
 
-Write tests for new features and bug fixes. Follow red-green-refactor cycle. Ensure components are testable. Use Vitest for unit tests, Cypress for e2e. Tests must be independent and verify SSR-safe patterns.
+Write tests for new features and bug fixes. Follow red-green-refactor cycle. Ensure components are testable. Use Vitest with @nuxt/test-utils and @vue/test-utils for all tests. Tests must be independent and verify SSR-safe patterns.
+
+**Test Structure:**
+- Component tests: `app/components/[ComponentName]/[ComponentName].test.ts`
+- Composable tests: `app/composables/[composableName]/[composableName].test.ts`
+- Utility tests: `app/utils/[utilityName]/[utilityName].test.ts`
+- E2E tests: `app/tests/e2e/[testName].e2e.test.ts`
+
+**Testing Tools:**
+- Unit/Component: Vitest, @vue/test-utils, @nuxt/test-utils/runtime
+- E2E: @nuxt/test-utils/e2e with Playwright
+- Mocking: `mockNuxtImport` for Nuxt auto-imports
+- Mounting: `mountSuspended` for SSR-safe component mounting
 
 ### V. Development Practices
 
@@ -59,9 +71,12 @@ Use `@bubblesortt/nuxt-es-toolkit` with `use` prefix convention. Data fetching v
 - Follow Nuxt 4.x conventions and check Nuxt LLM context for updates
 - Use `@bubblesortt/nuxt-es-toolkit` with `use` prefix convention
 - Verify components degrade gracefully without hydration
-- **NEVER destructure props** - always use `props.` prefix in template and script
+- **NEVER destructure props** - always use `props.` prefix in script, but in template don't use `props.` prefix
 - **NEVER create separate interfaces for props** - write types inline with `defineProps<{ ... }>()`
 - **NEVER leave comments in code** - code must be self-explanatory
+- **Test Structure**: Follow component/composable/utility test file naming conventions
+- **Test Dependencies**: Use `@nuxt/test-utils` and `@vue/test-utils` instead of Cypress
+- **Test Environment**: Use `happy-dom` for unit tests, Playwright for e2e tests
 
 ## Governance
 
